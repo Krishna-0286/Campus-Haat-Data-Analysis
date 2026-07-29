@@ -15,35 +15,7 @@ The project analyzes two linked datasets from the platform: **order placement** 
 
 ---
 
-## 🗂️ Repository Structure
-
-```
-campus-heart-data-analysis/
-│
-├── data/
-│   ├── order_campus.csv                     # Raw order-level data
-│   ├── new_delivery_data.csv                # Raw delivery-lifecycle data
-│   ├── orders_cleaned_for_powerbi.csv        # Cleaned orders, ready for BI tools
-│   ├── delivery_cleaned_for_powerbi.csv      # Cleaned deliveries, ready for BI tools
-│   └── seller_summary_for_powerbi.csv        # Pre-aggregated seller reliability table
-│
-├── notebooks/
-│   └── delivery_order_full_analysis.ipynb    # Full cleaning + EDA + insights pipeline
-│
-├── dashboard/
-│   ├── streamlit_dashboard.py                # Interactive Streamlit web app
-│   └── business_analysis_dashboard.html      # Standalone static report (no server needed)
-│
-├── docs/
-│   ├── data_cleaning_error_types_interview_guide.md
-│   └── powerbi_dashboard_guide.md            # Step-by-step Power BI build guide
-│
-└── README.md
-```
-
-*(Rename/organize folders to match your actual repo layout before pushing — adjust paths above if your files sit flat in the repo root.)*
-
----
+ 
 
 ## 🧰 Tech Stack
 
@@ -72,7 +44,7 @@ The raw data required substantial cleaning before analysis was reliable. Key iss
 | **Logical/integrity errors** | ~8.5% of records showed a pickup timestamp *before* the confirmation timestamp | Flagged as a data-integrity issue and excluded from timing metrics |
 | **Outliers** | A handful of "delivered" orders showed durations of months/years due to data errors | Capped to a realistic 0–24 hour window; excluded rows reported transparently |
 
-Full methodology and reasoning for each decision is documented in [`docs/data_cleaning_error_types_interview_guide.md`](docs/data_cleaning_error_types_interview_guide.md).
+ 
 
 ---
 
@@ -87,50 +59,8 @@ Full methodology and reasoning for each decision is documented in [`docs/data_cl
 
 ---
 
-## 🚀 How to Run
-
-### 1. Jupyter Notebook (full cleaning + analysis pipeline)
-```bash
-pip install pandas numpy matplotlib
-jupyter notebook notebooks/delivery_order_full_analysis.ipynb
-```
-Update the file paths in the first code cell to point at your local copies of the two raw CSVs, then run all cells top to bottom.
-
-### 2. Streamlit Dashboard (interactive)
-```bash
-pip install streamlit pandas numpy plotly
-cd dashboard
-streamlit run streamlit_dashboard.py
-```
-Requires `orders_cleaned_for_powerbi.csv`, `delivery_cleaned_for_powerbi.csv`, and `seller_summary_for_powerbi.csv` to be in the same folder as the script (or update the paths inside `load_data()`).
-
-### 3. Static HTML Report
-Open `dashboard/business_analysis_dashboard.html` directly in any browser — no installation or server required.
-
-### 4. Power BI Dashboard
-Follow the step-by-step build guide in [`docs/powerbi_dashboard_guide.md`](docs/powerbi_dashboard_guide.md), which covers data import, relationships, DAX measures, and visual layout using the cleaned CSVs in `data/`.
-
----
-
-## 📈 Dashboard Preview
-
-*(Add a screenshot of your Streamlit app or Power BI dashboard here once uploaded — e.g.)*
-
-```markdown
-![Dashboard preview](docs/screenshots/dashboard_overview.png)
-```
-
----
-
-## 🔮 Possible Next Steps
-
-- Root-cause investigation into the 46% order-abandonment rate (funnel/UX analysis)
-- Cohort-based retention analysis to separate acquisition decline from engagement decline
-- Seller-level operational audit for low-reliability, high-volume sellers
-- A/B test on confirm-to-pickup workflow changes to validate the bottleneck fix
-
----
-
+ 
+ 
 ## 👤 Author
 
 Krishna — B.Tech Chemical Engineering, MNNIT Allahabad
